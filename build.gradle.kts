@@ -1,5 +1,5 @@
 plugins {
-	kotlin("jvm") version "1.9.25"
+	kotlin("jvm") version "2.1.20"
 	kotlin("plugin.spring") version "1.9.25"
 	id("com.google.protobuf") version "0.9.4"
 	id("java")
