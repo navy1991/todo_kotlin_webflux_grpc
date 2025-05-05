@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "timezone": "Asia/Tokyo",
+  "major": {
+    "stabilityDays": 10
+  },
+  "minor": {
+    "stabilityDays": 5
+  },
+  "patch": {
+    "stabilityDays": 5
+  },
+  "labels": ["renovate"]
+}
