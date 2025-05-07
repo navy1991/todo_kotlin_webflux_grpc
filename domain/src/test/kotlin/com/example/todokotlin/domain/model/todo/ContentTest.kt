@@ -1,6 +1,6 @@
 package com.example.todokotlin.domain.model.todo
 
-import org.junit.jupiter.api.Assertions.assertEquals
+import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
@@ -15,7 +15,7 @@ class ContentTest {
         val actual = Content.from(value = value)
 
         // Assert
-        assertEquals(value, actual.value)
+        actual.value.shouldBe(value)
     }
 
     companion object {
