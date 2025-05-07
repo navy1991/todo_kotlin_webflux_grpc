@@ -1,0 +1,7 @@
+spring.config:
+  activate:
+    on-profile:
+      - local
+      - - test
+    import:
+      - application-domain-local.yml
