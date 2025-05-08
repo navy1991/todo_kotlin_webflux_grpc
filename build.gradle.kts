@@ -1,21 +1,27 @@
 plugins {
-	id("spring-boot-conventions")
-	alias(libs.plugins.spring.boot) apply false
-	alias(libs.plugins.spring.dependency.management) apply false
-	alias(libs.plugins.kotlin.jvm) apply false
-	alias(libs.plugins.kotlin.plugin.spring) apply false
-	alias(libs.plugins.kotlin.plugin.noarg) apply false
-	alias(libs.plugins.sonarqube)
+    id("spring-boot-conventions")
+    alias(libs.plugins.spring.boot) apply false
+    alias(libs.plugins.spring.dependency.management) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.kotlin.plugin.spring) apply false
+    alias(libs.plugins.kotlin.plugin.noarg) apply false
+    alias(libs.plugins.kover)
+    alias(libs.plugins.sonarqube)
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
+}
+
+dependencies {
+    // https://kotlin.github.io/kotlinx-kover/gradle-plugin/#multi-module-kotlin-jvm-project
+    kover(project(":domain"))
 }
 
 sonar {
-	properties {
-		property("sonar.projectKey", "navy1991_todo_kotlin_webflux_grpc")
-		property("sonar.organization", "h-isawa")
-		property("sonar.host.url", "https://sonarcloud.io")
-	}
+    properties {
+        property("sonar.projectKey", "navy1991_todo_kotlin_webflux_grpc")
+        property("sonar.organization", "h-isawa")
+        property("sonar.host.url", "https://sonarcloud.io")
+    }
 }

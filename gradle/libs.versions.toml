@@ -8,9 +8,10 @@ springBoot = "3.4.5"
 springDepencencyManagement = "1.1.7"
 
 kotest = "5.9.0"
+
 detekt = "1.23.6"
 detektKotlinVersion = "1.9.23" # https://github.com/detekt/detekt/releases/tag/v1.23.6
-
+kover = "0.9.1"
 sonarqube = "6.0.1.5171"
 
 [libraries]
@@ -44,6 +45,7 @@ kotlin-noarg = { module = "org.jetbrains.kotlin:kotlin-noarg", version.ref = "ko
 kotlin-allopen = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref = "kotlin" }
 spring-boot-gradle-plugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "springBoot" }
 detekt-gradle-plugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
+kover-gradle-plugin = { module = "org.jetbrains.kotlinx:kover-gradle-plugin", version.ref = "kover" }
 
 [bundles]
 kotlin = [
@@ -63,4 +65,5 @@ spring-dependency-management = { id = "io.spring.dependency-management", version
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-plugin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version.ref = "kotlin" }
 kotlin-plugin-noarg = { id = "org.jetbrains.kotlin.plugin.noarg", version.ref = "kotlin" }
+kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }

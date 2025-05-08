@@ -5,6 +5,7 @@ plugins {
     id("common-conventions")
     kotlin("jvm")
     id("io.gitlab.arturbosch.detekt")
+    id("org.jetbrains.kotlinx.kover")
 }
 
 val javaVersion: String = libs.findVersion("jvm").get().requiredVersion
