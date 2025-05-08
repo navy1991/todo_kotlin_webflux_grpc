@@ -13,4 +13,5 @@ dependencies {
     implementation(libs.kotlin.noarg)
     implementation(libs.kotlin.allopen)
     implementation(libs.spring.boot.gradle.plugin)
+    implementation(libs.detekt.gradle.plugin)
 }

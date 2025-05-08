@@ -1,13 +1,15 @@
 [versions]
 jvm = "21"
 
-# ref: https://docs.spring.io/spring-boot/appendix/dependency-versions/coordinates.html
+# https://docs.spring.io/spring-boot/appendix/dependency-versions/coordinates.html
 kotlin = "1.9.25"
 kotlinxCoroutines = "1.8.1"
 springBoot = "3.4.5"
 springDepencencyManagement = "1.1.7"
 
 kotest = "5.9.0"
+detekt = "1.23.6"
+detektKotlinVersion = "1.9.23" # https://github.com/detekt/detekt/releases/tag/v1.23.6
 
 sonarqube = "6.0.1.5171"
 
@@ -33,11 +35,15 @@ kotest-bom = { module = "io.kotest:kotest-bom", version.ref = "kotest" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core"}
 kotest-property = { module = "io.kotest:kotest-property"}
 kotest-runner-junit = { module = "io.kotest:kotest-runner-junit", version.ref = "kotest"}
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 
+
+# Plugins
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-noarg = { module = "org.jetbrains.kotlin:kotlin-noarg", version.ref = "kotlin" }
 kotlin-allopen = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref = "kotlin" }
 spring-boot-gradle-plugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "springBoot" }
+detekt-gradle-plugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 
 [bundles]
 kotlin = [

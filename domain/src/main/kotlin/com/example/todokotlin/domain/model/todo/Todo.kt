@@ -7,7 +7,7 @@ class Todo private constructor(
     content: Content,
     priority: Priority,
     dueDate: LocalDateTime?,
-){
+) {
     /** Todoの内容 */
     var content: Content = content
         private set
