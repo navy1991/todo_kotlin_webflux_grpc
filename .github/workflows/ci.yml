@@ -42,7 +42,7 @@ jobs:
       - name: Analyze by SonarQube
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew build sonar --info
+        run: ./gradlew build sonar
       # Unit Test
       - name: Test Report
         uses: EnricoMi/publish-unit-test-result-action@v2
