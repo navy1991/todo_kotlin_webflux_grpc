@@ -12,6 +12,7 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
+      # Set up
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
@@ -34,7 +35,16 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
-      - name: Build and analyze
+      # Coverage
+      - name: Coverage Report
+        run: ./gradlew koverXmlReport
+      # Unit Test
+      - name: Test Report
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: test-results/**/*.xml
+      - name: Analyze by SonarQube
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew build sonar --info
