@@ -1,1 +1,9 @@
-rootProject.name = "todo"
+rootProject.name = "todo-kotlin"
+
+pluginManagement {
+    includeBuild("build-logic")
+}
+
+include (
+":domain",
+)

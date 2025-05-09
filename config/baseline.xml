@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>EmptyFunctionBlock:TodoApplicationTests.kt$TodoApplicationTests${ }</ID>
+    <ID>Indentation:TodoApplication.kt$ </ID>
+    <ID>Indentation:TodoApplicationTests.kt$TodoApplicationTests$ </ID>
+    <ID>NoBlankLineBeforeRbrace:TodoApplicationTests.kt$TodoApplicationTests$ </ID>
+    <ID>SpreadOperator:TodoApplication.kt$(*args)</ID>
+  </CurrentIssues>
+</SmellBaseline>
