@@ -43,7 +43,7 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: test-results/**/*.xml
+          files: ${{ github.workspace }}/**/build/test-results/**/*.xml
       - name: Analyze by SonarQube
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
