@@ -23,5 +23,6 @@ sonar {
         property("sonar.projectKey", "navy1991_todo_kotlin_webflux_grpc")
         property("sonar.organization", "h-isawa")
         property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.coverage.jacoco.xmlReportPaths", "${layout.buildDirectory}/reports/kover/report.xml")
     }
 }
