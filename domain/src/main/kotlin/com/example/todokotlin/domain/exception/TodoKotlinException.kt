@@ -11,6 +11,7 @@ open class TodoKotlinException(
 
         // todo
         INVALID_CONTENT,
+        INVALID_PRIORITY,
     }
 
     enum class Level {
