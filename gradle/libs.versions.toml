@@ -52,9 +52,15 @@ kotlin = [
     "kotlin-refletct",
     "kotlin-stdlib-jdk8",
 ]
+kotlin-coroutines = [
+    "kotlinx-coroutines-core",
+    "kotlinx-coroutines-jdk8",
+    "kotlinx-coroutines-reactor",
+]
 spring-boot-test = [
     "spring-boot-starter-test",
     "spring-boot-starter-webflux",
+    "kotlinx-coroutines-test",
     "kotest-assertions-core",
     "kotest-property",
 ]
