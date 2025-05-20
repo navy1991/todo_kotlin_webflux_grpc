@@ -1,0 +1,7 @@
+mysql:
+  host: localhost
+  user: root
+  port: 3306
+  password: root
+  database: todo_kotlin
+  connection-timeout: 3

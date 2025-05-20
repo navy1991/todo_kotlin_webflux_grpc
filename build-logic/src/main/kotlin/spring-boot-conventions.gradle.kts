@@ -4,7 +4,7 @@ plugins {
 }
 
 dependencies {
-    implementation(libs.findLibrary("spring-boot-starter-core").get())
+    implementation(libs.findBundle("spring-boot-starter").get())
 
     testImplementation(libs.findLibrary("spring-boot-starter-test").get())
 }

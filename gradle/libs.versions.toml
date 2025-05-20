@@ -7,6 +7,9 @@ kotlinxCoroutines = "1.8.1"
 springBoot = "3.4.5"
 springDepencencyManagement = "1.1.7"
 
+r2dbc-mysql = "1.4.1"
+flyway = "11.8.1"
+
 kotest = "5.9.0"
 
 detekt = "1.23.6"
@@ -22,22 +25,27 @@ kotlinx-coroutines-bom = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-bo
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core"}
 kotlinx-coroutines-jdk8 = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8"}
 kotlinx-coroutines-reactor = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactor"}
-kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test"}
 
 # Spring Boot
 spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "springBoot" }
 spring-boot-starter-core = { module = "org.springframework.boot:spring-boot-starter" }
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 spring-boot-starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux" }
+spring-boot-starter-data-r2dbc = { module = "org.springframework.boot:spring-boot-starter-data-r2dbc" }
 spring-boot-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor" }
 
+# Database
+r2dbc-mysql = { module = "io.asyncer:r2dbc-mysql", version.ref = "r2dbc-mysql" }
+flyway-core = { module = "org.flywaydb:flyway-core", version.ref = "flyway" }
+h2 = { module = "com.h2database:h2" }
+r2dbc-h2 = { module = "io.r2dbc:r2dbc-h2" }
+
 # Test
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test"}
 kotest-bom = { module = "io.kotest:kotest-bom", version.ref = "kotest" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core"}
 kotest-property = { module = "io.kotest:kotest-property"}
-kotest-runner-junit = { module = "io.kotest:kotest-runner-junit", version.ref = "kotest"}
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
-
 
 # Plugins
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -46,6 +54,7 @@ kotlin-allopen = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref =
 spring-boot-gradle-plugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "springBoot" }
 detekt-gradle-plugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 kover-gradle-plugin = { module = "org.jetbrains.kotlinx:kover-gradle-plugin", version.ref = "kover" }
+flyway-gradle-plugin = { module = "org.flywaydb:flyway-gradle-plugin", version.ref = "flyway" }
 
 [bundles]
 kotlin = [
@@ -57,12 +66,14 @@ kotlin-coroutines = [
     "kotlinx-coroutines-jdk8",
     "kotlinx-coroutines-reactor",
 ]
-spring-boot-test = [
-    "spring-boot-starter-test",
-    "spring-boot-starter-webflux",
+kotlin-test = [
     "kotlinx-coroutines-test",
     "kotest-assertions-core",
     "kotest-property",
+]
+spring-boot-starter = [
+    "spring-boot-starter-core",
+    "spring-boot-starter-webflux",
 ]
 
 [plugins]

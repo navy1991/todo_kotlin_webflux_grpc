@@ -18,6 +18,8 @@ dependencies {
     implementation(libs.findBundle("kotlin").get())
     implementation(libs.findBundle("kotlin-coroutines").get())
 
+    testImplementation(libs.findBundle("kotlin-test").get())
+
     detektPlugins(libs.findLibrary("detekt-formatting").get())
 }
 

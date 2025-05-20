@@ -1,9 +1,10 @@
-rootProject.name = "todo-kotlin"
+rootProject.name = "todo-kotlin-webflux-grpc"
 
 pluginManagement {
     includeBuild("build-logic")
 }
 
-include (
-":domain",
+include(
+    ":domain",
+    ":infra",
 )

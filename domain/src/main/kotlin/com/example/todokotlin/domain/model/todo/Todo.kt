@@ -20,17 +20,26 @@ class Todo private constructor(
     var dueDate: LocalDateTime? = dueDate
         private set
 
+    /**
+     * Todoを更新
+     */
+    fun update(content: Content, priority: Priority, dueDate: LocalDateTime?) {
+        this.content = content
+        this.priority = priority
+        this.dueDate = dueDate
+    }
+
     companion object {
         /** Todoの追加 */
         fun add(
             id: Int,
             content: Content,
-            priority: Priority?,
-            dueDate: LocalDateTime?,
+            priority: Priority = Priority.MIDDLE,
+            dueDate: LocalDateTime? = null,
         ) = Todo(
             id = id,
             content = content,
-            priority = priority ?: Priority.MIDDLE,
+            priority = priority,
             dueDate = dueDate,
         )
 

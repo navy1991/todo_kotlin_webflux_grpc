@@ -9,6 +9,9 @@ open class TodoKotlinException(
     enum class Code {
         NOT_FOUND,
 
+        // EnumType
+        INVALID_SAVE_RESULT,
+
         // todo
         INVALID_CONTENT,
         INVALID_PRIORITY,
