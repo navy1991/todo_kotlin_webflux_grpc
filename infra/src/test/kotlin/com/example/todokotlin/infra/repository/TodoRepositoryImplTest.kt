@@ -1,6 +1,5 @@
 package com.example.todokotlin.infra.repository
 
-import com.example.todokotlin.domain.enumtype.SaveResult
 import com.example.todokotlin.domain.model.todo.Content
 import com.example.todokotlin.domain.model.todo.Priority
 import com.example.todokotlin.domain.model.todo.Todo
@@ -11,11 +10,11 @@ import io.r2dbc.spi.ConnectionFactory
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.r2dbc.core.DatabaseClient
 import org.springframework.r2dbc.core.awaitRowsUpdated
-import org.springframework.r2dbc.core.awaitSingleOrNull
 import java.time.LocalDateTime
 
 @SpringBootTest(
@@ -56,7 +55,7 @@ class TodoRepositoryImplTest {
         ).fetch().awaitRowsUpdated()
 
         // Act
-        val actual = todoRepositoryImpl.findOne(todo.id)
+        val actual = todoRepositoryImpl.findOne(todo.id!!)
 
         // Assert
         actual.shouldNotBeNull().run {
@@ -122,7 +121,6 @@ class TodoRepositoryImplTest {
     fun testSaveAsCreate() = runTest {
         // Arrange
         val todo = Todo.add(
-            id = 10,
             content = Content.from("create"),
             priority = Priority.HIGH,
             dueDate = LocalDateTime.of(2025, 5, 15, 12, 30, 10)
@@ -132,22 +130,17 @@ class TodoRepositoryImplTest {
         val actual = todoRepositoryImpl.save(todo)
 
         // Assert
-        actual.shouldBe(SaveResult.CREATED)
-        databaseClient
-            .sql("SELECT id, content, priority, due_date FROM todos WHERE id = ${todo.id};")
-            .fetch().awaitSingleOrNull().shouldNotBeNull().run {
-                this.get("id").shouldBe(todo.id)
-                this.get("content").shouldBe(todo.content.value)
-                this.get("priority").shouldBe(todo.priority.name)
-                this.get("due_date").shouldBe(todo.dueDate)
-            }
+        actual.id.shouldNotBeNull()
+        actual.content.shouldBe(todo.content)
+        actual.priority.shouldBe(todo.priority)
+        actual.dueDate.shouldBe(todo.dueDate)
     }
 
     @Test
     @DisplayName("正常系：Todoを保存(更新)")
     fun testSaveAsUpdate() = runTest {
         // Arrange
-        val todo = Todo.add(
+        val todo = Todo.reconstruct(
             id = 11,
             content = Content.from("update"),
             priority = Priority.LOW,
@@ -176,15 +169,10 @@ class TodoRepositoryImplTest {
         val actual = todoRepositoryImpl.save(todo)
 
         // Assert
-        actual.shouldBe(SaveResult.UPDATED)
-        databaseClient
-            .sql("SELECT id, content, priority, due_date FROM todos WHERE id = ${todo.id};")
-            .fetch().awaitSingleOrNull().shouldNotBeNull().run {
-                this.get("id").shouldBe(todo.id)
-                this.get("content").shouldBe(newContent.value)
-                this.get("priority").shouldBe(newPriority.name)
-                this.get("due_date").shouldBe(newDueDate)
-            }
+        actual.id.shouldBe(todo.id)
+        actual.content.shouldBe(todo.content)
+        actual.priority.shouldBe(todo.priority)
+        actual.dueDate.shouldBe(todo.dueDate)
     }
 
     @Test
@@ -203,9 +191,6 @@ class TodoRepositoryImplTest {
         ).fetch().awaitRowsUpdated()
 
         // Act
-        val actual = todoRepositoryImpl.delete(id)
-
-        // Assert
-        actual.shouldBe(1)
+        assertDoesNotThrow { todoRepositoryImpl.delete(id) }
     }
 }

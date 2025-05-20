@@ -1,6 +1,5 @@
 package com.example.todokotlin.domain.repository
 
-import com.example.todokotlin.domain.enumtype.SaveResult
 import com.example.todokotlin.domain.model.todo.Todo
 
 /**
@@ -20,10 +19,10 @@ interface TodoRepository {
     /**
      * Todoを保存
      */
-    suspend fun save(todo: Todo): SaveResult
+    suspend fun save(todo: Todo): Todo
 
     /**
      * Todoを削除
      */
-    suspend fun delete(id: Int): Int
+    suspend fun delete(id: Int)
 }
