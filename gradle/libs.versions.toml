@@ -11,6 +11,7 @@ r2dbc-mysql = "1.4.1"
 flyway = "11.8.1"
 
 kotest = "5.9.0"
+springmockk = "4.0.2"
 
 detekt = "1.23.6"
 detektKotlinVersion = "1.9.23" # https://github.com/detekt/detekt/releases/tag/v1.23.6
@@ -46,6 +47,7 @@ kotest-bom = { module = "io.kotest:kotest-bom", version.ref = "kotest" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core"}
 kotest-property = { module = "io.kotest:kotest-property"}
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+springmockk = { module = "com.ninja-squad:springmockk", version.ref = "springmockk" }
 
 # Plugins
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
