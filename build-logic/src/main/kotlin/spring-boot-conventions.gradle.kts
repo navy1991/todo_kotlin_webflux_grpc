@@ -10,6 +10,7 @@ dependencies {
         // https://github.com/Ninja-Squad/springmockk?tab=readme-ov-file#usage
         exclude(module = "mockito-core")
     }
+    testImplementation(libs.findLibrary("mockk").get())
     testImplementation(libs.findLibrary("springmockk").get())
 }
 
