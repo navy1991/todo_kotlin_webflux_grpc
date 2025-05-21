@@ -1,9 +1,9 @@
 package com.example.todokotlin.domain.model.todo
 
 import com.example.todokotlin.domain.exception.TodoKotlinException
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class ContentTest {
     @Test
@@ -24,7 +24,7 @@ class ContentTest {
         val value = "あ".repeat(MAX_LENGTH + 1)
 
         // Act
-        val e = assertThrows<TodoKotlinException> { Content.from(value = value) }
+        val e = shouldThrow<TodoKotlinException> { Content.from(value = value) }
 
         // Assert
         e.code.shouldBe(TodoKotlinException.Code.INVALID_CONTENT)

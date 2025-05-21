@@ -1,8 +1,8 @@
 package com.example.todokotlin.domain.model.todo
 
 import com.example.todokotlin.domain.exception.TodoKotlinException
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
@@ -23,7 +23,7 @@ class PriorityTest {
         // Arrange
 
         // Act
-        val e = assertThrows<TodoKotlinException> { Priority.from(value) }
+        val e = shouldThrow<TodoKotlinException> { Priority.from(value) }
 
         // Assert
         e.code.shouldBe(TodoKotlinException.Code.INVALID_PRIORITY)
