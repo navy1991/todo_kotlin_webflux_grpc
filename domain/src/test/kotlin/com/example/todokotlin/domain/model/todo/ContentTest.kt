@@ -2,14 +2,12 @@ package com.example.todokotlin.domain.model.todo
 
 import com.example.todokotlin.domain.exception.TodoKotlinException
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ContentTest {
     @Test
-    @DisplayName("正常系：Todoの内容を生成")
-    fun testFrom() {
+    fun `success - create Content`() {
         // Arrange
         val value = "あ".repeat(MAX_LENGTH)
 
@@ -21,8 +19,7 @@ class ContentTest {
     }
 
     @Test
-    @DisplayName("異常系：Todoの内容を生成：最大文字数")
-    fun testFromErrorOverMaxLength() {
+    fun `failure - create Content - maximum number of characters exceeded`() {
         // Arrange
         val value = "あ".repeat(MAX_LENGTH + 1)
 

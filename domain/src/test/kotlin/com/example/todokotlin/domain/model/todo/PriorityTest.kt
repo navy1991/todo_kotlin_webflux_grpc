@@ -2,7 +2,6 @@ package com.example.todokotlin.domain.model.todo
 
 import com.example.todokotlin.domain.exception.TodoKotlinException
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
@@ -10,8 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource
 class PriorityTest {
     @ParameterizedTest
     @ValueSource(strings = ["LOW", "MIDDLE", "HIGH"])
-    @DisplayName("正常系：優先度の生成")
-    fun testFrom(value: String) {
+    fun `success - create Priority`(value: String) {
         // Act
         val actual = Priority.from(value)
 
@@ -21,8 +19,7 @@ class PriorityTest {
 
     @ParameterizedTest
     @ValueSource(strings = ["low", "dummy", ""])
-    @DisplayName("異常系：優先度の生成エラー")
-    fun testFromError(value: String) {
+    fun `failure - create Priority - invalid value`(value: String) {
         // Arrange
 
         // Act

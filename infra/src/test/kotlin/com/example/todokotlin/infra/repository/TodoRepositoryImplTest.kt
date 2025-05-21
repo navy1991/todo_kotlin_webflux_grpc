@@ -4,13 +4,12 @@ import com.example.todokotlin.domain.model.todo.Content
 import com.example.todokotlin.domain.model.todo.Priority
 import com.example.todokotlin.domain.model.todo.Todo
 import com.example.todokotlin.infra.config.h2.H2Config
+import io.kotest.assertions.throwables.shouldNotThrowAny
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import io.r2dbc.spi.ConnectionFactory
 import kotlinx.coroutines.test.runTest
-import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertDoesNotThrow
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.r2dbc.core.DatabaseClient
@@ -35,8 +34,7 @@ class TodoRepositoryImplTest {
     }
 
     @Test
-    @DisplayName("正常系：Todoを取得")
-    fun testFindOne() = runTest {
+    fun `success - find a Todo`() = runTest {
         // Arrange
         val todo = Todo.reconstruct(
             id = 1,
@@ -67,8 +65,7 @@ class TodoRepositoryImplTest {
     }
 
     @Test
-    @DisplayName("正常系：Todoを全件取得")
-    fun testFindAll() = runTest {
+    fun `success - find all Todos`() = runTest {
         // Arrange
         val todoA = Todo.reconstruct(
             id = 2,
@@ -102,13 +99,13 @@ class TodoRepositoryImplTest {
 
         // Assert
         actual.shouldNotBeNull()
-        actual.get(0).run {
+        actual[1].run {
             this.id.shouldBe(todoA.id)
             this.content.shouldBe(todoA.content)
             this.priority.shouldBe(todoA.priority)
             this.dueDate.shouldBe(todoA.dueDate)
         }
-        actual.get(1).run {
+        actual[2].run {
             this.id.shouldBe(todoB.id)
             this.content.shouldBe(todoB.content)
             this.priority.shouldBe(todoB.priority)
@@ -117,8 +114,7 @@ class TodoRepositoryImplTest {
     }
 
     @Test
-    @DisplayName("正常系：Todoを保存(作成)")
-    fun testSaveAsCreate() = runTest {
+    fun `success - save a Todo as new`() = runTest {
         // Arrange
         val todo = Todo.add(
             content = Content.from("create"),
@@ -137,8 +133,7 @@ class TodoRepositoryImplTest {
     }
 
     @Test
-    @DisplayName("正常系：Todoを保存(更新)")
-    fun testSaveAsUpdate() = runTest {
+    fun `success - save a Todo as update`() = runTest {
         // Arrange
         val todo = Todo.reconstruct(
             id = 11,
@@ -176,8 +171,7 @@ class TodoRepositoryImplTest {
     }
 
     @Test
-    @DisplayName("正常系：Todoを削除")
-    fun testDelete() = runTest {
+    fun `success - delete a Todo`() = runTest {
         // Arrange
         val id = 99
         databaseClient.sql(
@@ -191,6 +185,6 @@ class TodoRepositoryImplTest {
         ).fetch().awaitRowsUpdated()
 
         // Act
-        assertDoesNotThrow { todoRepositoryImpl.delete(id) }
+        shouldNotThrowAny { todoRepositoryImpl.delete(id) }
     }
 }
