@@ -33,12 +33,12 @@ class Todo private constructor(
         /** Todoの追加 */
         fun add(
             content: Content,
-            priority: Priority = Priority.MIDDLE,
+            priority: Priority?,
             dueDate: LocalDateTime? = null,
         ) = Todo(
             id = null,
             content = content,
-            priority = priority,
+            priority = priority ?: Priority.MIDDLE,
             dueDate = dueDate,
         )
 

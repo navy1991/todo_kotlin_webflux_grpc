@@ -6,5 +6,6 @@ pluginManagement {
 
 include(
     ":domain",
+    ":app",
     ":infra",
 )

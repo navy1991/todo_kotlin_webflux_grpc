@@ -1,11 +1,10 @@
-group = "com.example.todokotlin.infra"
+group = "com.example.todokotlin.app"
 
 plugins {
     id("spring-boot-conventions")
-    id("r2dbc-conventions")
 }
 
 dependencies {
     implementation(project(":domain"))
-    implementation(project(":app"))
+    testImplementation(project(":infra"))
 }
