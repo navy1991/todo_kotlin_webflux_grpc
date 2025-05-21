@@ -1,0 +1,17 @@
+spring:
+  config:
+    import: application-infra-common.yml
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+    import: application-infra-local.yml
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+    import: application-infra-test.yml

@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    default: test
+  config:
+    import:
+      - application-app.yml
+      - classpath:config/application-domain.yml
+      - classpath:config/application-infra.yml

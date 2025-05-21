@@ -16,6 +16,8 @@ repositories {
 dependencies {
     // https://kotlin.github.io/kotlinx-kover/gradle-plugin/#multi-module-kotlin-jvm-project
     kover(project(":domain"))
+    kover(project(":infra"))
+    kover(project(":app"))
 }
 
 sonar {

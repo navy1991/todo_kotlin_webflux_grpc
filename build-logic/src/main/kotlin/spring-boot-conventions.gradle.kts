@@ -4,9 +4,14 @@ plugins {
 }
 
 dependencies {
-    implementation(libs.findLibrary("spring-boot-starter-core").get())
+    implementation(libs.findBundle("spring-boot-starter").get())
 
-    testImplementation(libs.findLibrary("spring-boot-starter-test").get())
+    testImplementation(libs.findLibrary("spring-boot-starter-test").get()) {
+        // https://github.com/Ninja-Squad/springmockk?tab=readme-ov-file#usage
+        exclude(module = "mockito-core")
+    }
+    testImplementation(libs.findLibrary("mockk").get())
+    testImplementation(libs.findLibrary("springmockk").get())
 }
 
 tasks.withType<Test> {

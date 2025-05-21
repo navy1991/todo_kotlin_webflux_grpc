@@ -1,0 +1,10 @@
+spring:
+  flyway:
+    enabled: true
+    url: jdbc:h2:mem:todo_kotlin;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=TRUE;MODE=MySQL
+
+h2:
+  user: sa
+  password:
+  database: todo_kotlin
+  option: DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=TRUE;MODE=MySQL

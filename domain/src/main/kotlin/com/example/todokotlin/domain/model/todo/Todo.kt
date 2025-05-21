@@ -3,7 +3,7 @@ package com.example.todokotlin.domain.model.todo
 import java.time.LocalDateTime
 
 class Todo private constructor(
-    val id: Int,
+    val id: Int?,
     content: Content,
     priority: Priority,
     dueDate: LocalDateTime?,
@@ -20,15 +20,23 @@ class Todo private constructor(
     var dueDate: LocalDateTime? = dueDate
         private set
 
+    /**
+     * Todoを更新
+     */
+    fun update(content: Content, priority: Priority, dueDate: LocalDateTime?) {
+        this.content = content
+        this.priority = priority
+        this.dueDate = dueDate
+    }
+
     companion object {
         /** Todoの追加 */
         fun add(
-            id: Int,
             content: Content,
             priority: Priority?,
-            dueDate: LocalDateTime?,
+            dueDate: LocalDateTime? = null,
         ) = Todo(
-            id = id,
+            id = null,
             content = content,
             priority = priority ?: Priority.MIDDLE,
             dueDate = dueDate,
