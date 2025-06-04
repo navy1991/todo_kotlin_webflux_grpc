@@ -12,8 +12,8 @@ import java.time.Duration
 @ConfigurationProperties(prefix = "mysql")
 data class MySqlConnectionProperties(
     val host: String,
-    val user: String,
     val port: Int,
+    val user: String,
     val password: String,
     val database: String,
     val connectionTimeout: Long,
@@ -22,8 +22,8 @@ data class MySqlConnectionProperties(
         ConnectionFactoryOptions.builder()
             .option(ConnectionFactoryOptions.DRIVER, "mysql")
             .option(ConnectionFactoryOptions.HOST, host)
-            .option(ConnectionFactoryOptions.USER, user)
             .option(ConnectionFactoryOptions.PORT, port)
+            .option(ConnectionFactoryOptions.USER, user)
             .option(ConnectionFactoryOptions.PASSWORD, password)
             .option(ConnectionFactoryOptions.DATABASE, database)
             .option(ConnectionFactoryOptions.CONNECT_TIMEOUT, Duration.ofSeconds(connectionTimeout))
