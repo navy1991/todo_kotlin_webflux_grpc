@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    default: local
+  config:
+    import:
+      - classpath:config/application-domain.yml
+      - classpath:config/application-app.yml
+      - classpath:config/application-infra.yml
+      - classpath:config/application-presentation.yml

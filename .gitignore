@@ -41,3 +41,5 @@ out/
 
 ### for application ###
 data/
+
+*.log

@@ -19,7 +19,7 @@ interface TodoRepository {
     /**
      * Todoを保存
      */
-    suspend fun save(todo: Todo)
+    suspend fun save(todo: Todo): Todo
 
     /**
      * Todoを削除

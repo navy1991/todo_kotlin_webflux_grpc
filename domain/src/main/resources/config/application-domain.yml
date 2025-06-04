@@ -2,6 +2,6 @@ spring.config:
   activate:
     on-profile:
       - local
-      - - test
+      - test
     import:
       - application-domain-local.yml
