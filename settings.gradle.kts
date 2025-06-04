@@ -8,4 +8,5 @@ include(
     ":domain",
     ":app",
     ":infra",
+    ":presentation"
 )

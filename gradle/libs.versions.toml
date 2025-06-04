@@ -6,8 +6,12 @@ kotlin = "1.9.25"
 kotlinxCoroutines = "1.8.1"
 springBoot = "3.4.5"
 springDepencencyManagement = "1.1.7"
+springGrpcVersion = "0.8.0"
 
-r2dbc-mysql = "1.4.1"
+grpcNettyShaded = "1.72.0"
+grpcKotlin = "1.4.3"
+
+r2dbc-mysql = "1.4.0"
 flyway = "11.8.1"
 
 kotest = "5.9.0"
@@ -35,6 +39,14 @@ spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-star
 spring-boot-starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux" }
 spring-boot-starter-data-r2dbc = { module = "org.springframework.boot:spring-boot-starter-data-r2dbc" }
 spring-boot-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor" }
+
+# gRPC
+spring-grpc-dependencies = { module = "org.springframework.grpc:spring-grpc-dependencies" , version.ref = "springGrpcVersion" }
+spring-boot-starter-grpc = { module = "org.springframework.grpc:spring-grpc-spring-boot-starter"}
+spring-grpc-test = { module = "org.springframework.grpc:spring-grpc-test" }
+# https://docs.spring.io/spring-grpc/reference/server.html#_shaded_netty
+grpc-netty-shaded = { module = "io.grpc:grpc-netty-shaded", version.ref = "grpcNettyShaded" }
+grpc-kotlin-stub = { module = "io.grpc:grpc-kotlin-stub", version.ref = "grpcKotlin" }
 
 # Database
 r2dbc-mysql = { module = "io.asyncer:r2dbc-mysql", version.ref = "r2dbc-mysql" }
