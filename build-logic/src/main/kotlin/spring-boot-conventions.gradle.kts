@@ -4,6 +4,8 @@ plugins {
 }
 
 dependencies {
+    api(platform(libs.findLibrary("spring-boot-dependencies").get()))
+
     implementation(libs.findBundle("spring-boot-starter").get())
 
     testImplementation(libs.findLibrary("spring-boot-starter-test").get()) {

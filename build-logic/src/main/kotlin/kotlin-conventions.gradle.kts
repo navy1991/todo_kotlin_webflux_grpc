@@ -11,7 +11,6 @@ plugins {
 val javaVersion: String = libs.findVersion("jvm").get().requiredVersion
 
 dependencies {
-    api(platform(libs.findLibrary("spring-boot-dependencies").get()))
     api(platform(libs.findLibrary("kotlinx-coroutines-bom").get()))
     api(platform(libs.findLibrary("kotest-bom").get()))
 
@@ -37,10 +36,10 @@ java {
 
 // https://github.com/detekt/detekt?tab=readme-ov-file#with-gradle
 detekt {
-    buildUponDefaultConfig = true // preconfigure defaults
-    allRules = false // activate all available (even unstable) rules.
-    config.setFrom("${rootProject.projectDir}/config/detekt.yml") // point to your custom config defining rules to run, overwriting default behavior
-    baseline = file("${rootProject.projectDir}/config/baseline.xml") // a way of suppressing issues before introducing detekt
+    buildUponDefaultConfig = true
+    allRules = false
+    config.setFrom("${rootProject.projectDir}/config/detekt.yml")
+    baseline = file("${rootProject.projectDir}/config/baseline.xml")
     autoCorrect = true // by detekt-formatting
 }
 
