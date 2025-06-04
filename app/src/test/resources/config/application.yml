@@ -1,6 +1,4 @@
 spring:
-  profiles:
-    default: test
   config:
     import:
       - application-app.yml

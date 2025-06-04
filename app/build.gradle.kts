@@ -8,3 +8,7 @@ dependencies {
     implementation(project(":domain"))
     testImplementation(project(":infra"))
 }
+
+tasks.withType<Test> {
+    jvmArgs("-Djdk.attach.allowAttachSelf=true")
+}
