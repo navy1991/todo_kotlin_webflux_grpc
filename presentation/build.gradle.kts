@@ -27,7 +27,7 @@ dependencies {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:4.30.0"
+        artifact = "com.google.protobuf:protoc:4.31.1"
     }
     plugins {
         id("grpc") {
