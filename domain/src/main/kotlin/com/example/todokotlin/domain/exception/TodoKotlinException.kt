@@ -7,10 +7,14 @@ open class TodoKotlinException(
     cause: Throwable? = null,
 ) : RuntimeException(message, cause) {
     enum class Code {
-        NOT_FOUND,
+        EMPTY_ID,
+
+        // EnumType
+        INVALID_SAVE_RESULT,
 
         // todo
         INVALID_CONTENT,
+        INVALID_PRIORITY,
     }
 
     enum class Level {

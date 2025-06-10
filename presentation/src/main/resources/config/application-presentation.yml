@@ -1,0 +1,18 @@
+logging:
+  level:
+    ROOT: INFO
+    com.example.todokotlin: INFO
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+    import: application-presentation-local.yml
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+    import: application-presentation-test.yml

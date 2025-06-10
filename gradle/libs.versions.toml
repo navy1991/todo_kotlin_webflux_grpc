@@ -6,8 +6,17 @@ kotlin = "1.9.25"
 kotlinxCoroutines = "1.8.1"
 springBoot = "3.4.5"
 springDepencencyManagement = "1.1.7"
+springGrpcVersion = "0.8.0"
+
+grpcNettyShaded = "1.72.0"
+grpcKotlin = "1.4.3"
+
+r2dbc-mysql = "1.4.0"
+flyway = "11.8.1"
 
 kotest = "5.9.0"
+mockk = "1.14.2"
+springmockk = "4.0.2"
 
 detekt = "1.23.6"
 detektKotlinVersion = "1.9.23" # https://github.com/detekt/detekt/releases/tag/v1.23.6
@@ -22,22 +31,37 @@ kotlinx-coroutines-bom = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-bo
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core"}
 kotlinx-coroutines-jdk8 = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8"}
 kotlinx-coroutines-reactor = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactor"}
-kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test"}
 
 # Spring Boot
 spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "springBoot" }
 spring-boot-starter-core = { module = "org.springframework.boot:spring-boot-starter" }
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 spring-boot-starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux" }
+spring-boot-starter-data-r2dbc = { module = "org.springframework.boot:spring-boot-starter-data-r2dbc" }
 spring-boot-configuration-processor = { module = "org.springframework.boot:spring-boot-configuration-processor" }
 
+# gRPC
+spring-grpc-dependencies = { module = "org.springframework.grpc:spring-grpc-dependencies" , version.ref = "springGrpcVersion" }
+spring-boot-starter-grpc = { module = "org.springframework.grpc:spring-grpc-spring-boot-starter"}
+spring-grpc-test = { module = "org.springframework.grpc:spring-grpc-test" }
+# https://docs.spring.io/spring-grpc/reference/server.html#_shaded_netty
+grpc-netty-shaded = { module = "io.grpc:grpc-netty-shaded", version.ref = "grpcNettyShaded" }
+grpc-kotlin-stub = { module = "io.grpc:grpc-kotlin-stub", version.ref = "grpcKotlin" }
+
+# Database
+r2dbc-mysql = { module = "io.asyncer:r2dbc-mysql", version.ref = "r2dbc-mysql" }
+flyway-core = { module = "org.flywaydb:flyway-core", version.ref = "flyway" }
+h2 = { module = "com.h2database:h2" }
+r2dbc-h2 = { module = "io.r2dbc:r2dbc-h2" }
+
 # Test
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test"}
 kotest-bom = { module = "io.kotest:kotest-bom", version.ref = "kotest" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core"}
 kotest-property = { module = "io.kotest:kotest-property"}
-kotest-runner-junit = { module = "io.kotest:kotest-runner-junit", version.ref = "kotest"}
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
-
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+springmockk = { module = "com.ninja-squad:springmockk", version.ref = "springmockk" }
 
 # Plugins
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -46,17 +70,26 @@ kotlin-allopen = { module = "org.jetbrains.kotlin:kotlin-allopen", version.ref =
 spring-boot-gradle-plugin = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "springBoot" }
 detekt-gradle-plugin = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 kover-gradle-plugin = { module = "org.jetbrains.kotlinx:kover-gradle-plugin", version.ref = "kover" }
+flyway-gradle-plugin = { module = "org.flywaydb:flyway-gradle-plugin", version.ref = "flyway" }
 
 [bundles]
 kotlin = [
     "kotlin-refletct",
     "kotlin-stdlib-jdk8",
 ]
-spring-boot-test = [
-    "spring-boot-starter-test",
-    "spring-boot-starter-webflux",
+kotlin-coroutines = [
+    "kotlinx-coroutines-core",
+    "kotlinx-coroutines-jdk8",
+    "kotlinx-coroutines-reactor",
+]
+kotlin-test = [
+    "kotlinx-coroutines-test",
     "kotest-assertions-core",
     "kotest-property",
+]
+spring-boot-starter = [
+    "spring-boot-starter-core",
+    "spring-boot-starter-webflux",
 ]
 
 [plugins]

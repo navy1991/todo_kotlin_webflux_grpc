@@ -15,4 +15,5 @@ dependencies {
     implementation(libs.spring.boot.gradle.plugin)
     implementation(libs.detekt.gradle.plugin)
     implementation(libs.kover.gradle.plugin)
+    implementation(libs.flyway.gradle.plugin)
 }
