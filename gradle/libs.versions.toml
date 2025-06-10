@@ -14,7 +14,7 @@ grpcKotlin = "1.4.3"
 r2dbc-mysql = "1.4.0"
 flyway = "11.8.1"
 
-kotest = "5.9.0"
+kotest = "5.9.1"
 mockk = "1.14.2"
 springmockk = "4.0.2"
 
