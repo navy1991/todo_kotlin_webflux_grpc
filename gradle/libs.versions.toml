@@ -15,7 +15,7 @@ r2dbc-mysql = "1.4.0"
 flyway = "11.8.1"
 
 kotest = "5.9.0"
-mockk = "1.14.2"
+mockk = "1.14.11"
 springmockk = "4.0.2"
 
 detekt = "1.23.6"
